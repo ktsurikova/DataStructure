@@ -116,13 +116,6 @@ namespace SetCollection
             return resSet;
         }
 
-        public void UnionWith(Set<T> b)
-        {
-            for (int i = 0; i < b.count; i++)
-            {
-                Add(b.array[i]);
-            }
-        }
 
         public static Set<T> Intersect(Set<T> a, Set<T> b)
         {
@@ -135,14 +128,7 @@ namespace SetCollection
             return resSet;
         }
 
-        public void IntersectWith(Set<T> b)
-        {
-            Set<T> resSet = Intersect(this, b);
-            array = resSet.array;
-            count = resSet.count;
-        }
-
-        public static Set<T> Difference(Set<T> a,Set<T> b)
+        public static Set<T> Difference(Set<T> a, Set<T> b)
         {
             Set<T> resSet = new Set<T>();
             for (int i = 0; i < a.count; i++)
@@ -153,11 +139,34 @@ namespace SetCollection
             return resSet;
         }
 
+        public void IntersectWith(Set<T> b)
+        {
+            Copy(this, Intersect(this, b));
+        }
+
+        private static void Copy(Set<T> a, Set<T> b)
+        {
+            Array.Clear(a.array, 0, a.count);
+            a.count = 0;
+            a.capacity = 8;
+
+            for (int i = 0; i < b.count; i++)
+            {
+                a.Add(b.array[i]);
+            }
+        }
+
         public void DifferenceWith(Set<T> b)
         {
-            Set<T> resSet = Difference(this, b);
-            array = resSet.array;
-            count = resSet.count;
+            Copy(this, Difference(this, b));
+        }
+
+        public void UnionWith(Set<T> b)
+        {
+            for (int i = 0; i < b.count; i++)
+            {
+                Add(b.array[i]);
+            }
         }
 
         public bool IsSubsetOf(Set<T> b)
