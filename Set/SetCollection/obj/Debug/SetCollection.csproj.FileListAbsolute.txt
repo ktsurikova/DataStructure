@@ -1,0 +1,15 @@
+C:\univer\New_Folder\ConApp2004\SetCollection\bin\Debug\SetCollection.dll
+C:\univer\New_Folder\ConApp2004\SetCollection\bin\Debug\SetCollection.pdb
+C:\univer\New_Folder\ConApp2004\SetCollection\obj\Debug\SetCollection.csprojResolveAssemblyReference.cache
+C:\univer\New_Folder\ConApp2004\SetCollection\obj\Debug\SetCollection.dll
+C:\univer\New_Folder\ConApp2004\SetCollection\obj\Debug\SetCollection.pdb
+E:\ConApp2004\SetCollection\bin\Debug\SetCollection.dll
+E:\ConApp2004\SetCollection\bin\Debug\SetCollection.pdb
+E:\ConApp2004\SetCollection\obj\Debug\SetCollection.csprojResolveAssemblyReference.cache
+E:\ConApp2004\SetCollection\obj\Debug\SetCollection.dll
+E:\ConApp2004\SetCollection\obj\Debug\SetCollection.pdb
+D:\VS_2015_Projects\ConApp2004\SetCollection\bin\Debug\SetCollection.dll
+D:\VS_2015_Projects\ConApp2004\SetCollection\bin\Debug\SetCollection.pdb
+D:\VS_2015_Projects\ConApp2004\SetCollection\obj\Debug\SetCollection.csprojResolveAssemblyReference.cache
+D:\VS_2015_Projects\ConApp2004\SetCollection\obj\Debug\SetCollection.dll
+D:\VS_2015_Projects\ConApp2004\SetCollection\obj\Debug\SetCollection.pdb
