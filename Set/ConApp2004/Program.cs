@@ -36,17 +36,18 @@ namespace ConApp
 
             Console.WriteLine("set1 {0}",set1);
             Console.WriteLine("set2 {0}", set2);
-            
 
+            Console.WriteLine("static {0}", Set<Point>.Union(set2,set1));
             set2.UnionWith(set1);
             Console.WriteLine("set2 union with set1 \n {0}",set2);
-            Console.WriteLine("is set2 subset of set1 {0}",set2.IfSubsetOf(set1));
-            Console.WriteLine("is set1 subset of set2 {0}",set1.IfSubsetOf(set2));
+            Console.WriteLine("is set2 subset of set1 {0}",set2.IsSubsetOf(set1));
+            Console.WriteLine("is set1 subset of set2 {0}",set1.IsSubsetOf(set2));
             Set<Point>.IteratorSet iteratorSet = set2.GetIterator();
             while (iteratorSet.MoveNext())
             {
                 Console.WriteLine(iteratorSet.Current);
             }
+            Console.WriteLine("static {0}", Set<Point>.Difference(set2, set1));
             set2.DifferenceWith(set1);
             Console.WriteLine("set2 difference with set1 \n {0}", set2);
             set2.Add(new Point(1,1));
@@ -64,7 +65,8 @@ namespace ConApp
             );
 
             Console.WriteLine("set3 {0}", set3);
-            Console.WriteLine("is set2 equal to set3 {0}",set2.SetEquals(set3));
+            Console.WriteLine("static {0}", Set<Point>.IsEqualsSet(set2, set3));
+            Console.WriteLine("is set2 equal to set3 {0}",set2.IsEqualToSet(set3));
 
             Console.ReadLine();
         }

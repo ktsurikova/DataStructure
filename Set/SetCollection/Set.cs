@@ -81,7 +81,7 @@ namespace SetCollection
         //{
         //    Set<T> b = obj as Set<T>;
         //    if (b == null) return false;
-        //    return SetEquals(b);
+        //    return IsEqualToSet(b);
         //}
 
         //public override int GetHashCode()
@@ -89,21 +89,26 @@ namespace SetCollection
         //    return base.GetHashCode();
         //}
 
-        public bool SetEquals(Set<T> b)
+        public bool IsEqualToSet(Set<T> b)
         {
-            if (b.count != count) return false;
-            for (int i = 0; i < count; i++)
+            return IsEqualsSet(this, b);
+        }
+
+        public static bool IsEqualsSet(Set<T> a, Set<T> b)
+        {
+            if (b.count != a.count) return false;
+            for (int i = 0; i < a.count; i++)
             {
-                if (!b.Contains(array[i])) return false;
+                if (!b.Contains(a.array[i])) return false;
             }
             return true;
         }
 
-        public Set<T> Union(Set<T> b)
+        public static Set<T> Union(Set<T> a, Set<T> b)
         {
-            Set<T> resSet = new Set<T>(capacity);
-            Array.Copy(array, resSet.array, capacity);
-            resSet.count = count;
+            Set<T> resSet = new Set<T>(a.capacity);
+            Array.Copy(a.array, resSet.array, a.capacity);
+            resSet.count = a.count;
             for (int i = 0; i < b.count; i++)
             {
                 resSet.Add(b.array[i]);
@@ -119,12 +124,12 @@ namespace SetCollection
             }
         }
 
-        public Set<T> Intersect(Set<T> b)
+        public static Set<T> Intersect(Set<T> a, Set<T> b)
         {
             Set<T> resSet = new Set<T>();
             for (int i = 0; i < b.count; i++)
             {
-                if (Contains(b.array[i]))
+                if (a.Contains(b.array[i]))
                     resSet.Add(b.array[i]);
             }
             return resSet;
@@ -132,32 +137,32 @@ namespace SetCollection
 
         public void IntersectWith(Set<T> b)
         {
-            Set<T> resSet = Intersect(b);
+            Set<T> resSet = Intersect(this, b);
             array = resSet.array;
             count = resSet.count;
         }
 
-        public Set<T> Difference(Set<T> b)
+        public static Set<T> Difference(Set<T> a,Set<T> b)
         {
             Set<T> resSet = new Set<T>();
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < a.count; i++)
             {
-                if (!b.Contains(array[i]))
-                    resSet.Add(array[i]);
+                if (!b.Contains(a.array[i]))
+                    resSet.Add(a.array[i]);
             }
             return resSet;
         }
 
         public void DifferenceWith(Set<T> b)
         {
-            Set<T> resSet = Difference(b);
+            Set<T> resSet = Difference(this, b);
             array = resSet.array;
             count = resSet.count;
         }
 
-        public bool IfSubsetOf(Set<T> b)
+        public bool IsSubsetOf(Set<T> b)
         {
-            return Difference(b).IsEmpty;
+            return Difference(this, b).IsEmpty;
         }
     }
 }
