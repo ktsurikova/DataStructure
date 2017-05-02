@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,29 +7,30 @@ using System.Threading.Tasks;
 
 namespace SetCollection
 {
-    public partial class Set<T> where T : class
+    public partial class Set<T> : ICloneable, IEnumerable<T>, ISet<T> where T : class, IEquatable<T>
     {
-        public class IteratorSet
+        private class IteratorSet : IEnumerator<T>
         {
-            private T[] iteratorArr;
+            private Set<T> set;
             private int index = -1;
 
-            public IteratorSet(T[] arr)
+            public IteratorSet(Set<T> other)
             {
-                iteratorArr = new T[arr.Length];
-                Array.Copy(arr, iteratorArr, arr.Length);
+                set = other;
             }
 
-            public bool MoveNext()
-            {
-                index++;
-                return (index < iteratorArr.Length && iteratorArr[index] != null);
-            }
+            public bool MoveNext() => ++index < set.count;
 
-            public T Current => iteratorArr[index];
+            public T Current => set.array[index];
+
+            object IEnumerator.Current => set.array[index];
 
             public void Reset() => index = -1;
 
+            public void Dispose()
+            {
+
+            }
         }
     }
 }
