@@ -41,7 +41,7 @@ namespace BinarySearchTreeCollection
         }
 
         #region Add
-        public virtual void Add(T data)
+        public void Add(T data)
         {
             if (ReferenceEquals(data,null)) throw new BinarySearchTreeException("data is null");
 
